@@ -67,9 +67,6 @@ Alpine.data("checkin", (data) => ({
                     this.tanggal = response.data.event.tanggal;
                     this.userName = response.data.event.userName;
                     this.record = response.data.event.record;
-                    // .format(
-                    //     "MMMM Do YYYY, h:mm:ss a"
-                    // );
                 }
                 console.log(response.data);
             })
