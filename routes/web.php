@@ -29,6 +29,7 @@ Route::view('profile', 'profile')
 
 Route::middleware(['auth','admin', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::view('/dashboard', 'dashboard-admin')->name('dashboard');
+    Route::view('/jobfair', 'jobfair-admin')->name('jobfair');
 });
 
 require __DIR__.'/auth.php';

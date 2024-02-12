@@ -6,6 +6,7 @@ use App\Models\Kehadiran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use RamonRietdijk\LivewireTables\Columns\Column;
+use RamonRietdijk\LivewireTables\Columns\DateColumn;
 use RamonRietdijk\LivewireTables\Livewire\LivewireTable;
 
 class EventAttend extends LivewireTable
@@ -21,7 +22,8 @@ class EventAttend extends LivewireTable
     protected function columns(): array
     {
         return [
-            Column::make(__('Kehadiran'), 'created_at')
+            DateColumn::make(__('Kehadiran'), 'created_at')
+                ->format('D, d-M-Y H:m:s')
                 ->sortable(),
             Column::make(__('Job Fair'), 'event.jobfair.nama')
                 ->sortable(),
