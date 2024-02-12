@@ -4,16 +4,16 @@
             <div>
             {{
                 Carbon\Carbon::parse($item->tanggal)
-                    ->translatedFormat('l j F Y')
+                    ->translatedFormat('l, j F Y')
             }}
             </div>
-            <div>
+            {{-- <div class="text-left">
             {{
                 Carbon\Carbon::parse($item->tanggal)
                     ->locale('id_ID')
                     ->toFormattedDateString()
             }}
-            </div>
+            </div> --}}
             <div>
             {{
                 Carbon\Carbon::parse($item->tanggal)
@@ -21,7 +21,7 @@
             }}
             </div>
             <div>
-            {{-- {{ $item->jobfair->nama }} --}}
+            {{ $item->jobfair->nama }}
             {{-- {{ $item->refs['lokasi'] }} --}}
             {{-- {{ $item->kehadiran->count() }} --}}
             </div>

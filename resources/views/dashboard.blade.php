@@ -15,26 +15,8 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <p>{{ __("Daftar telah mengikuti job fair!") }}</p>
-                    @if (count($attend) > 0)
-                        @foreach ( $attend as $item)
-                            <div>
-                                {{ $item->event->tanggal }}
-                                {{ $item->event->jobfair->nama }}
-                                {{ $item->event->refs['lokasi'] }}
-                                {{ $item->created_at }}
-                            </div>
-                        @endforeach
-                    @else
-                        <p>Belum ada data.</p>
-                    @endif
 
-                    <div>
-                        @foreach ($user->tokens as $item)
-                            <div>{{ $item }}</div>
-                        @endforeach
-                    </div>
-
-                    {{-- {{ $user->bearerToken() }} --}}
+                    <livewire:event-attend />
                 </div>
             </div>
         </div>

@@ -9,9 +9,11 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{-- <div class="grid grid-cols-2 gap-2"> --}}
-                        <livewire:admin.event-list />
-                    {{-- </div> --}}
+                    <div>
+                        <p class="pb-4 text-xl font-black uppercase">Daftar Event Job Fair</p>
+                        {{-- <livewire:admin.event-list /> --}}
+                        <livewire:admin.event-table />
+                    </div>
                 </div>
             </div>
         </div>
