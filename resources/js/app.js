@@ -15,6 +15,7 @@ Alpine.data("checkin", (data) => ({
     alertOpen: false,
     loadingOpen: true,
     message: "",
+    eventId: null,
     formLogin: {
         email: "",
         password: "",
@@ -37,6 +38,7 @@ Alpine.data("checkin", (data) => ({
                 });
             } else {
                 this.modalOpen = true;
+                this.eventId = data.eid;
             }
         }, 500);
     },
@@ -97,6 +99,10 @@ Alpine.data("checkin", (data) => ({
                 if (response.data.status) {
                     localStorage.setItem("token", response.data.token);
                     this.modalOpen = false;
+                    this.eventCheckin({
+                        token: response.data.token,
+                        eid: this.eventId,
+                    });
                 }
                 console.log(response.data);
             })
