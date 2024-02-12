@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/checkin', [EventController::class, 'qrCheckin']);
 
 Route::post('/login', [EventController::class, 'apiLogin']);
+
+Route::get('/tes', function(Request $request) {
+    return Auth::user();
+});

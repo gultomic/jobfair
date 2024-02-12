@@ -2,11 +2,47 @@ import "./bootstrap";
 import "moment";
 
 Alpine.data("dashboard", (data) => ({
+    nouat: false,
+    modalOpen: false,
+    alertOpen: false,
+    message: "",
+    password: "",
     init() {
         let token = localStorage.getItem("token");
         if (token === null || token !== data.token) {
+            this.nouat = true;
             // localStorage.setItem("token", data.token);
         }
+    },
+    async tokenSubmit() {
+        await window
+            .axios({
+                method: "POST",
+                url: "/api/login",
+                data: JSON.stringify({
+                    email: data.email,
+                    password: this.password,
+                }),
+                headers: {
+                    Accept: "application/json",
+                    "content-type": "application/json",
+                    "X-CSRF-TOKEN": document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute("content"),
+                },
+                credentials: "same-origin",
+            })
+            .then((response) => {
+                if (response.data.status) {
+                    localStorage.setItem("token", response.data.token);
+                    this.modalOpen = false;
+                    this.nouat = false;
+                }
+            })
+            .catch((error) => {
+                this.message = error.response.data.message;
+                this.alertOpen = true;
+            });
     },
 }));
 

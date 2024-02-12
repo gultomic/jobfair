@@ -33,3 +33,7 @@ Route::middleware(['auth','admin', 'verified'])->prefix('admin')->name('admin.')
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/tes', function() {
+    return Auth::user();
+});

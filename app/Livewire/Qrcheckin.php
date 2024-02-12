@@ -26,12 +26,6 @@ class Qrcheckin extends Component
 
     public function render()
     {
-        // $this->token = $this->js("localStorage.getItem('token')");
-        // $pat = PersonalAccessToken::where('token', $this->token)->first();
-        // $this->user = $pat->tokenable;
-        // $this->js("alert(localStorage.getItem('token'))");
-        // dd($this->token);
-
         return view('livewire.qrcheckin');
     }
 
