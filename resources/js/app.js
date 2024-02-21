@@ -11,7 +11,6 @@ Alpine.data("dashboard", (data) => ({
         let token = localStorage.getItem("token");
         if (token === null || token !== data.token) {
             this.nouat = true;
-            // localStorage.setItem("token", data.token);
         }
     },
     async tokenSubmit() {

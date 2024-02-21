@@ -1,6 +1,8 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -13,12 +15,19 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
         },
     },
 
     darkMode: "class",
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        plugin(function ({ addBase }) {
+            addBase({
+                html: { fontSize: "13px" },
+            });
+        }),
+    ],
 };

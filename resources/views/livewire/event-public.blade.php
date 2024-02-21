@@ -5,33 +5,39 @@
 @endphp
 
 <div class="sm:py-6">
-    <p class="px-4">Job Fair hari ini:</p>
+    <p class="px-4">Event hari ini:</p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
         @foreach ($today as $item)
-            <a href="/event/{{ $item->id }}" class="p-4 border rounded-lg cursor-pointer bg-sky-100 border-sky-300 hover:border-sky-500">
-                <p class="text-2xl font-black tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
-                <p>{{ $item->refs['lokasi'] }}</p>
+            <a href="/event/{{ $item->id }}" class="border rounded-lg cursor-pointer bg-sky-100 border-sky-300 hover:border-sky-500">
+                <img class="object-cover w-full h-48 bg-gray-200" src="{{ $item->jobfair->refs['image'] }}" alt="{{ $item->jobfair->nama }} job fair">
+                <div class="p-4">
+                    <p class="text-2xl font-semibold tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
+                    <p class="leading-5 text-gray-600 font-extralight">{{ $item->refs['lokasi'] }}</p>
+                </div>
             </a>
         @endforeach
     </div>
 
-    <p class="px-4 pt-6">Job Fair akan datang:</p>
+    <p class="px-4 pt-6">Event akan datang:</p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-4 lg:gap-8">
         @foreach ($soon as $item)
-            <div class="p-4 border rounded-lg bg-emerald-50 border-emerald-300">
-                <p class="text-xs font-bold text-blue-400">{{ $item->tanggal }}</p>
-                <p class="py-1 text-lg font-black leading-5 tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
-                <p>{{ $item->refs['lokasi'] }}</p>
+            <div class="border rounded-lg bg-emerald-50 border-emerald-300">
+                <img class="object-cover w-full h-32 bg-gray-200" src="{{ $item->jobfair->refs['image'] }}" alt="{{ $item->jobfair->nama }} job fair">
+                <div class="p-2">
+                    <p class="text-xs font-bold text-blue-400">{{ $item->tanggal }}</p>
+                    <p class="py-1 text-lg font-semibold leading-5 tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
+                    <p class="leading-4 tracking-tight font-extralight">{{ $item->refs['lokasi'] }}</p>
+                </div>
             </div>
         @endforeach
     </div>
 
-    <p class="px-4 pt-6">Job Fair selesai:</p>
+    <p class="px-4 pt-6">Event selesai:</p>
     <div class="grid grid-cols-2 gap-1 md:grid-cols-6 lg:gap-2">
         @foreach ($held as $item)
             <div class="p-4 bg-white border rounded-lg">
                 <p class="text-xs font-bold text-blue-400">{{ $item->tanggal }}</p>
-                <p class="py-1 text-lg font-black leading-5 tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
+                <p class="py-1 text-lg font-semibold leading-5 tracking-tighter uppercase">{{ $item->jobfair->nama }}</p>
             </div>
         @endforeach
     </div>

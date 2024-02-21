@@ -32,6 +32,9 @@ class mainSeeder extends Seeder
             $jf = Jobfair::create([
                 'nama' => $faker->words(rand(2, 5), true),
                 // 'deskripsi' => $faker->paragraphs(2, true),
+                'refs' => [
+                    'image' => 'https://picsum.photos/800/600?random='.rand(999,10000)
+                ]
             ]);
 
             for ($e=1; $e <= rand(1, 3); $e++) {
@@ -63,6 +66,9 @@ class mainSeeder extends Seeder
         $jf = Jobfair::create([
             'nama' => $faker->words(rand(2, 5), true),
             // 'deskripsi' => $faker->paragraphs(2, true),
+            'refs' => [
+                'image' => 'https://picsum.photos/800/600?random='.rand(999,10000)
+            ]
         ]);
 
         Event::create([
@@ -85,7 +91,11 @@ class mainSeeder extends Seeder
         $jf = Jobfair::create([
             'nama' => $faker->words(rand(2, 5), true),
             // 'deskripsi' => $faker->paragraphs(2, true),
+            'refs' => [
+                'image' => 'https://picsum.photos/350/600?random='.rand(999,10000)
+            ]
         ]);
+
         Event::create([
             'jobfair_id' => $jf->id,
             'tanggal' => Carbon::now()->add(1, 'day'),

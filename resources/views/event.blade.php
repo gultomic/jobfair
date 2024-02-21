@@ -42,9 +42,11 @@
                                 manual
                             </div>
                         </div>
+
                         <div>
-                            <p><span>Jadwal Event:</span> {{ $item->tanggal }}</p>
-                            <p><span>Lokasi Event:</span> {{ $item->refs['lokasi'] }}</p>
+                            <img class="object-cover w-full h-64 bg-gray-200" src="{{ $item->jobfair->refs['image'] }}" alt="{{ $item->jobfair->nama }} job fair">
+                            <p><span class="text-gray-400">Jadwal Event:</span> {{ $item->tanggal }}</p>
+                            <p><span class="text-gray-400">Lokasi Event:</span> {{ $item->refs['lokasi'] }}</p>
                             <div class="py-2">{!! $item->refs['keterangan'] !!}</div>
                         </div>
                     </div>
@@ -63,7 +65,7 @@
                     </div>
 
                     <div class="text-sm text-center text-gray-500 ms-4 sm:text-end sm:ms-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        {{-- Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }}) --}}
                     </div>
                 </div>
             </div>

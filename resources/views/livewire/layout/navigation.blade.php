@@ -28,7 +28,7 @@ $logout = function (Logout $logout) {
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" wire:navigate>
                             {{ __('Dashboard') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.jobfair')" :active="request()->routeIs('admin.jobfair')" wire:navigate>
+                        <x-nav-link :href="route('admin.jobfair.index')" :active="request()->routeIs('admin.jobfair.*')" wire:navigate>
                             {{ __('Job Fair') }}
                         </x-nav-link>
                     @else
@@ -88,7 +88,7 @@ $logout = function (Logout $logout) {
                 <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.jobfair')" :active="request()->routeIs('admin.jobfair')" wire:navigate>
+                <x-responsive-nav-link :href="route('admin.jobfair.index')" :active="request()->routeIs('admin.jobfair')" wire:navigate>
                     {{ __('Job Fair') }}
                 </x-responsive-nav-link>
             @else
