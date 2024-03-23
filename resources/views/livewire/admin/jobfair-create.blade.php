@@ -30,6 +30,7 @@
                         {{ __('Simpan') }}
                     </x-primary-button>
                 </form>
+
                 <div>
                     @if ($image)
                         <img src="{{ $image->temporaryUrl() }}" class="object-cover w-full bg-gray-100 h-80">
