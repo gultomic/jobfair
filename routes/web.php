@@ -7,6 +7,7 @@ use App\Livewire\Admin\JobfairShow;
 use App\Livewire\Admin\JobfairCreate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 Route::view('/', 'welcome');
 
@@ -22,6 +23,8 @@ Route::get('/event/checkin/{id}/qrcode', function($id) {
     return view('qrcheckin', ['eid' => $id]);
 })
     ->name('event.qrcheckin');
+
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -41,6 +44,13 @@ Route::middleware(['auth','admin', 'verified'])->prefix('admin')->name('admin.')
     Route::get('/event/{id}', function ($id) {
         return view('event-admin', ['eid' => $id]);
     })->name('event.kehadiran');
+    Route::get('/event/qcod/{id}', function($id) {
+        $fileDest = storage_path("app/public/$id.png");
+        $url = URL::to('event.qrcheckin', ['id' => $id]);
+        QrCode::format('png')->size(400)->generate($url, $fileDest);
+        return response()->download($fileDest);
+        // return view('qrcode', ['eid' => $id]);
+    });
 });
 
 require __DIR__.'/auth.php';

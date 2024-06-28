@@ -9,7 +9,7 @@ use Illuminate\Validation\Rules;
 
 use function Livewire\Volt\layout;
 use function Livewire\Volt\rules;
-use function Livewire\Volt\state;
+use function Livewire\Volt\{mount, state};
 
 layout('layouts.guest');
 
@@ -18,14 +18,20 @@ state([
     'email' => '',
     'telp' => '',
     'password' => '',
-    'password_confirmation' => ''
+    'password_confirmation' => '',
+    'captchaImage',
 ]);
+
+mount(function () {
+    $this->captchaImage = captcha_img();
+});
 
 rules([
     'name' => ['required', 'string', 'max:255'],
     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
     'telp' => ['required', 'string', 'max:13'],
     'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+    'captcha' => 'required|captcha',
 ]);
 
 $register = function () {
@@ -96,6 +102,11 @@ $register = function () {
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+        {{-- <div class="flex p-3 captcha">
+            <span>{!! $captchaImage !!}</span>
+            <button class="pl-2 button">&#x21bb;</button>
+        </div> --}}
 
         <div class="flex items-center justify-end mt-4">
             <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
